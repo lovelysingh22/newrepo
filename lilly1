@@ -1,4 +1,3 @@
-ubuntu@ip-172-31-44-116:~/mytestgit$ vi pipelinedemo
 pipeline
 {
 agent any

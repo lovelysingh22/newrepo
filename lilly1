@@ -1,0 +1,59 @@
+ubuntu@ip-172-31-44-116:~/mytestgit$ vi pipelinedemo
+pipeline
+{
+agent any
+stages
+{
+stage('one')
+steps
+{
+echo 'Hi, Welcome to lovely's world'
+}
+stage('Two')
+(
+steps
+{
+input('Do you want to go to next step')
+}
+}
+stage('Three)
+(
+when
+{
+not
+(
+branch "master"
+)
+)
+steps
+(
+echo " I LOVE YOU LOVELY:)"
+}
+}
+stages('four')
+(
+Parallel
+{
+stage('unit test')
+{
+steps
+{
+echo "Running the unit test"
+}
+}
+stage('Integration test')
+{
+agent
+{
+docker
+{
+reuseNode false
+image 'centos'
+}
+}
+steps
+{
+echo 'running the integration test'
+}
+}
+}
